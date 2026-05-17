@@ -15,13 +15,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.use("/uploads", express.static("uploads"));
 // rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/datasets", datasetRoutes);
 app.use("/api/images", imageRoutes);
 app.use("/api/stats", statsRoutes);
+
 
 
 
