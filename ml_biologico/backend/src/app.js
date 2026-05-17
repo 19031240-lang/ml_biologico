@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/users.routes.js";
 import datasetRoutes from "./routes/dataset.routes.js";
 import imageRoutes from "./routes/image.routes.js";
+import statsRoutes from "./routes/stats.routes.js";
 
 
 dotenv.config();
@@ -20,6 +21,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/datasets", datasetRoutes);
 app.use("/api/images", imageRoutes);
+app.use("/api/stats", statsRoutes);
+
 
 
 app.get("/", (req, res) => {
