@@ -42,15 +42,12 @@
   background: #ffffff;
   border-radius: 20px;
   padding: 20px;
+  margin-bottom: 30px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .logs {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 20px;
   color: #333;
-}
-.logs h2 {
-  color: #006699;
-  margin-bottom: 10px;
 }
