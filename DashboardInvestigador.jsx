@@ -1,31 +1,86 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
+import "./DashboardInvestigador.css";
 
 function DashboardInvestigador() {
-  const [stats, setStats] = useState({ accuracy: [], loss: [] });
+  const [stats, setStats] = useState([]);
 
   useEffect(() => {
     const fetchStats = async () => {
       const res = await axios.get("http://localhost:4000/api/investigador/stats");
-      setStats(res.data);
+      setStats(res.data); // backend devuelve ~1000 registros
     };
     fetchStats();
   }, []);
 
+  const epochs = stats.map(d => d.Epoca);
+  const lossTrain = stats.map(d => d.Loss_Train);
+  const lossVal = stats.map(d => d.Loss_Val);
+  const accuracy = stats.map(d => d.Accuracy);
+  const precision = stats.map(d => d.Precision);
+  const recall = stats.map(d => d.Recall);
+  const f1 = stats.map(d => d.F1_Score);
+
   return (
-    <div>
+    <div className="dashboard-investigador">
       <h1>Vista Investigador 🔬</h1>
-      <Line
-        data={{
-          labels: stats.accuracy.map((_, i) => `Epoch ${i+1}`),
-          datasets: [
-            { label: "Accuracy", data: stats.accuracy, borderColor: "green" },
-            { label: "Loss", data: stats.loss, borderColor: "red" }
-          ]
-        }}
-      />
-      <p>Logs de entrenamiento disponibles en consola.</p>
+
+      <div className="cards">
+        <div className="card">
+          <h2>Accuracy promedio</h2>
+          <p>{accuracy.length > 0 ? 
+              (accuracy.reduce((a,b)=>a+b,0)/accuracy.length).toFixed(2) : 0}</p>
+        </div>
+        <div className="card">
+          <h2>Loss Train promedio</h2>
+          <p>{lossTrain.length > 0 ? 
+              (lossTrain.reduce((a,b)=>a+b,0)/lossTrain.length).toFixed(2) : 0}</p>
+        </div>
+        <div className="card">
+          <h2>Loss Val promedio</h2>
+          <p>{lossVal.length > 0 ? 
+              (lossVal.reduce((a,b)=>a+b,0)/lossVal.length).toFixed(2) : 0}</p>
+        </div>
+      </div>
+
+      <div className="chart-container">
+        <Line
+          data={{
+            labels: epochs,
+            datasets: [
+              { label: "Loss Train", data: lossTrain, borderColor: "#1f4d3a" },
+              { label: "Loss Val", data: lossVal, borderColor: "#006699" }
+            ]
+          }}
+        />
+      </div>
+
+      <div className="chart-container">
+        <Line
+          data={{
+            labels: epochs,
+            datasets: [
+              { label: "Accuracy", data: accuracy, borderColor: "#79c8c0" }
+            ]
+          }}
+        />
+      </div>
+
+      <div className="chart-container">
+        <Bar
+          data={{
+            labels: epochs,
+            datasets: [
+              { label: "Precision", data: precision, backgroundColor: "#1f4d3a" },
+              { label: "Recall", data: recall, backgroundColor: "#006699" },
+              { label: "F1 Score", data: f1, backgroundColor: "#79c8c0" }
+            ]
+          }}
+        />
+      </div>
+
+      <p className="logs">Logs de entrenamiento disponibles en consola.</p>
     </div>
   );
 }
