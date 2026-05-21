@@ -5,6 +5,8 @@ import "./index.css";
 
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
+import DashboardInvestigador from "./pages/DashboardInvestigador";
+import DashboardEstudiante from "./pages/DashboardEstudiante";
 
 function App() {
 
