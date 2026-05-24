@@ -4,27 +4,31 @@ import {
   FaImage,
   FaRobot,
   FaUsers,
+  FaServer,
 } from "react-icons/fa";
 
 function Sidebar({ logout, seccion, setSeccion, rol }) {
 
-  // Menú según rol
   const itemsAdmin = [
-    { id: "inicio",    icon: <FaChartPie className="icon" />,  label: "Dashboard"  },
-    { id: "usuarios",  icon: <FaUsers    className="icon" />,  label: "Usuarios"   },
-    { id: "datasets",  icon: <FaDatabase className="icon" />,  label: "Datasets"   },
+    { id: "inicio",    icon: <FaChartPie className="icon" />, label: "Dashboard"  },
+    { id: "usuarios",  icon: <FaUsers    className="icon" />, label: "Usuarios"   },
+    { id: "datasets",  icon: <FaDatabase className="icon" />, label: "Datasets"   },
+    { id: "imagenes",  icon: <FaImage    className="icon" />, label: "Imágenes"   },
+    { id: "cluster",   icon: <FaServer   className="icon" />, label: "Cluster"    },
   ];
 
   const itemsInvestigador = [
-    { id: "inicio",    icon: <FaChartPie className="icon" />,  label: "Dashboard"  },
-    { id: "datasets",  icon: <FaDatabase className="icon" />,  label: "Datasets"   },
-    { id: "imagenes",  icon: <FaImage    className="icon" />,  label: "Imágenes"   },
-    { id: "modelos",   icon: <FaRobot    className="icon" />,  label: "Modelos"    },
+    { id: "inicio",   icon: <FaChartPie className="icon" />, label: "Dashboard" },
+    { id: "datasets", icon: <FaDatabase className="icon" />, label: "Datasets"  },
+    { id: "imagenes", icon: <FaImage    className="icon" />, label: "Imágenes"  },
+    { id: "modelos",  icon: <FaRobot    className="icon" />, label: "Modelos"   },
+    { id: "cluster",  icon: <FaServer   className="icon" />, label: "Cluster"   },
   ];
 
   const itemsEstudiante = [
-    { id: "inicio",    icon: <FaChartPie className="icon" />,  label: "Dashboard"  },
-    { id: "imagenes",  icon: <FaImage    className="icon" />,  label: "Imágenes"   },
+    { id: "inicio",   icon: <FaChartPie className="icon" />, label: "Dashboard" },
+    { id: "imagenes", icon: <FaImage    className="icon" />, label: "Imágenes"  },
+    { id: "cluster",  icon: <FaServer   className="icon" />, label: "Cluster"   },
   ];
 
   const items =
@@ -34,9 +38,7 @@ function Sidebar({ logout, seccion, setSeccion, rol }) {
 
   return (
     <div className="sidebar">
-
-      <h2>ML Bio</h2>
-
+      <h2>ML Bio 🌿</h2>
       <ul>
         {items.map((item) => (
           <li
@@ -49,11 +51,7 @@ function Sidebar({ logout, seccion, setSeccion, rol }) {
           </li>
         ))}
       </ul>
-
-      <button onClick={logout}>
-        Cerrar sesión
-      </button>
-
+      <button onClick={logout}>Cerrar sesión</button>
     </div>
   );
 }

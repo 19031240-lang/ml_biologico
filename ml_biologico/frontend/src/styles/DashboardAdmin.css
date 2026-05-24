@@ -395,3 +395,201 @@
   background: rgba(255, 255, 255, 0.25) !important;
   font-weight: 700;
 }
+
+/* ── Subida de imágenes ── */
+.da-form-col {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.da-upload-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.da-file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 2px dashed var(--green);
+  border-radius: 50px;
+  background: var(--green-l);
+  color: var(--green-d);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.da-file-label:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.da-preview {
+  margin-top: 14px;
+}
+
+.da-preview-img {
+  height: 120px;
+  border-radius: var(--radius);
+  border: 2px solid var(--sand);
+  object-fit: cover;
+}
+
+/* Grid imágenes */
+.da-img-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.da-img-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.da-img-card:hover {
+  transform: translateY(-3px);
+}
+
+.da-img-thumb {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  background: var(--sand);
+}
+
+.da-img-info {
+  padding: 10px 12px;
+}
+
+.da-img-name {
+  font-size: 11px;
+  color: var(--gray);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Cluster ── */
+.da-btn-cluster {
+  display: inline-block;
+  margin-bottom: 24px;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 14px 32px;
+}
+
+.da-cluster-frame-wrap {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  height: 600px;
+}
+
+.da-cluster-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Modal ── */
+.da-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.da-modal {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 36px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.da-modal h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-d);
+}
+
+.da-modal-sub {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: -8px;
+}
+
+.da-modal-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-d);
+}
+
+.da-modal-preview {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 2px solid var(--sand);
+}
+
+.da-modal-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.da-modal-btns .da-btn {
+  flex: 1;
+}
+
+.da-input-full {
+  width: 100%;
+  border-radius: var(--radius) !important;
+}
+
+.da-select-full {
+  width: 100%;
+  border-radius: var(--radius);
+  padding: 11px 16px;
+}
+
+/* ── Botones en tarjeta ── */
+.da-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.da-btn-half {
+  flex: 1;
+  border-radius: var(--radius) !important;
+  text-align: center;
+}
+
+/* ── Dataset en imagen ── */
+.da-img-dataset {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 2px;
+}
