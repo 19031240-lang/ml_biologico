@@ -18,4 +18,13 @@ router.delete("/:id", verifyToken, async (req, res) => {
   res.json({ message: "Usuario eliminado" });
 });
 
+// UPDATE rol usuario
+router.put("/:id", verifyToken, async (req, res) => {
+  const { id_rol } = req.body;
+  await pool.query(
+    "UPDATE usuarios SET id_rol = ? WHERE id_usuario = ?",
+    [id_rol, req.params.id]
+  );
+  res.json({ message: "Rol actualizado" });
+});
 export default router;
