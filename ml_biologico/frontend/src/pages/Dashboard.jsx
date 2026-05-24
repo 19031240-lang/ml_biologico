@@ -1,158 +1,39 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import DashboardInvestigador from "./DashboardInvestigador";
+import DashboardEstudiante from "./DashboardEstudiante";
+import DashboardAdmin from "./DashboardAdmin"; 
 
 function Dashboard() {
 
-  const token = localStorage.getItem("token");
+  const usuario = JSON.parse(
+    localStorage.getItem("usuario")
+  );
 
-  const [stats, setStats] = useState({
-    datasets: 0,
-    imagenes: 0,
-    usuarios: 0,
-  });
+  const rol = Number(usuario?.id_rol);
 
-  const [datasets, setDatasets] = useState([]);
+  // ADMIN
+  if (rol === 1) {
+    return <DashboardAdmin />;
+  }
 
-  // STATS
-  const getStats = async () => {
+  // INVESTIGADOR
+  if (rol === 2) {
 
-    try {
+    return <DashboardInvestigador />;
 
-      const res = await axios.get(
-        "http://localhost:4000/api/stats",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  }
 
-      setStats(res.data);
+  // ESTUDIANTE
+  if (rol === 3) {
 
-    } catch (error) {
+    return <DashboardEstudiante />;
 
-      console.log(error);
-
-    }
-
-  };
-
-  // DATASETS
-  const getDatasets = async () => {
-
-    try {
-
-      const res = await axios.get(
-        "http://localhost:4000/api/datasets",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setDatasets(res.data);
-
-    } catch (error) {
-
-      console.log(error);
-
-    }
-
-  };
-
-  useEffect(() => {
-
-    getStats();
-    getDatasets();
-
-  }, []);
+  }
 
   return (
 
-    <div className="dashboard-content">
-
-      <h1>
-        Dashboard ML Biológico 🚀
-      </h1>
-
-      {/* CARDS */}
-      <div className="cards">
-
-        <div className="card">
-          <h2>Datasets</h2>
-          <p>{stats.datasets}</p>
-        </div>
-
-        <div className="card">
-          <h2>Imágenes</h2>
-          <p>{stats.imagenes}</p>
-        </div>
-
-        <div className="card">
-          <h2>Usuarios</h2>
-          <p>{stats.usuarios}</p>
-        </div>
-
-      </div>
-
-      {/* DATASETS */}
-      <h2 className="section-title">
-        Datasets
-      </h2>
-
-      <div className="dataset-grid">
-
-        {
-          datasets.map((dataset) => (
-
-            <div
-              className="dataset-card"
-              key={dataset.id_dataset}
-            >
-
-              {
-                dataset.imagen ? (
-
-                 <img
-                    src={`http://localhost:4000/uploads/${dataset.imagen}`}
-                    alt=""
-                    className="dataset-image"
-                />
-
-                ) : (
-
-                  <div className="no-image">
-                    Sin imagen
-                  </div>
-
-                )
-              }
-
-              <div className="dataset-info">
-
-                <h3>
-                  {dataset.nombre}
-                </h3>
-
-                <p>
-                  {dataset.descripcion}
-                </p>
-
-                <button>
-                  Ver más
-                </button>
-
-              </div>
-
-            </div>
-
-          ))
-        }
-
-      </div>
-
-    </div>
+    <h1>
+      Sin permisos
+    </h1>
 
   );
 

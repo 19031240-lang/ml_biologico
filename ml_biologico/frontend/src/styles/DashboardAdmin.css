@@ -1,0 +1,397 @@
+/* ── Variables ── */
+:root {
+  --green:   #6b8f71;
+  --green-d: #3a5a40;
+  --green-l: #f0fff4;
+  --blue:    #006699;
+  --blue-l:  #e6f2f8;
+  --sand:    #d8c3a5;
+  --sand-l:  #f5f1e8;
+  --white:   #ffffff;
+  --gray:    #666666;
+  --danger:  #c0392b;
+  --danger-l:#fdf0ee;
+  --edit:    #1f4d3a;
+  --radius:  14px;
+  --shadow:  0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* ── Wrapper ── */
+.da-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--sand-l);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ── Topbar ── */
+.da-topbar {
+  background: var(--white);
+  border-bottom: 2px solid var(--sand);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.da-topbar-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-d);
+  white-space: nowrap;
+}
+
+.da-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.da-tab {
+  padding: 9px 22px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  background: var(--sand-l);
+  color: var(--green-d);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.da-tab:hover {
+  background: var(--green-l);
+  border-color: var(--green);
+}
+
+.da-tab.active {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+
+/* ── Section ── */
+.da-section {
+  padding: 40px;
+  flex: 1;
+}
+
+.da-section-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--green-d);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--sand);
+}
+
+/* ── Cards de stats ── */
+.da-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.da-card {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid transparent;
+  transition: transform 0.2s;
+}
+
+.da-card:hover {
+  transform: translateY(-3px);
+}
+
+.da-card-green { border-color: var(--green); }
+.da-card-blue  { border-color: var(--blue);  }
+.da-card-sand  { border-color: var(--sand);  }
+
+.da-card-icon {
+  font-size: 32px;
+}
+
+.da-card-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--green-d);
+  line-height: 1;
+}
+
+.da-card-label {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+/* ── Info box ── */
+.da-info-box {
+  background: var(--green-l);
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  padding: 20px 26px;
+  color: var(--green-d);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+/* ── Formulario ── */
+.da-form-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+}
+
+.da-form-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-d);
+  margin-bottom: 16px;
+}
+
+.da-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.da-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 11px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--sand-l);
+}
+
+.da-input:focus {
+  border-color: var(--green);
+  background: var(--white);
+}
+
+.da-select {
+  padding: 11px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 14px;
+  outline: none;
+  background: var(--sand-l);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.da-select:focus {
+  border-color: var(--green);
+}
+
+/* ── Botones ── */
+.da-btn {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.da-btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+.da-btn-primary:hover {
+  background: var(--green-d);
+}
+
+.da-btn-ghost {
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green-d);
+}
+.da-btn-ghost:hover {
+  background: var(--green-l);
+}
+
+.da-btn-danger {
+  background: var(--danger);
+  color: var(--white);
+}
+.da-btn-danger:hover {
+  background: #a93226;
+}
+
+.da-btn-edit {
+  background: var(--blue-l);
+  color: var(--blue);
+  border: 2px solid var(--blue);
+}
+.da-btn-edit:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.da-btn-sm {
+  padding: 7px 14px;
+  font-size: 13px;
+}
+
+.da-btn-full {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* ── Tabla ── */
+.da-table-wrap {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.da-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.da-table thead {
+  background: var(--green);
+  color: var(--white);
+}
+
+.da-table th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.da-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.da-table tbody tr:hover {
+  background: var(--sand-l);
+}
+
+.da-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.da-empty {
+  text-align: center;
+  color: var(--gray);
+  padding: 30px !important;
+  font-style: italic;
+}
+
+/* ── Badges de rol ── */
+.da-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge-admin {
+  background: #fde8e8;
+  color: var(--danger);
+}
+
+.badge-inv {
+  background: var(--blue-l);
+  color: var(--blue);
+}
+
+.badge-est {
+  background: var(--green-l);
+  color: var(--green-d);
+}
+
+/* ── Grid datasets ── */
+.da-dataset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.da-dataset-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.da-dataset-card:hover {
+  transform: translateY(-4px);
+}
+
+.da-dataset-header {
+  height: 140px;
+  overflow: hidden;
+}
+
+.da-dataset-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.da-dataset-no-img {
+  width: 100%;
+  height: 100%;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.da-dataset-body {
+  padding: 16px;
+}
+
+.da-dataset-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-d);
+  margin-bottom: 6px;
+}
+
+.da-dataset-desc {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 14px;
+  min-height: 36px;
+}
+
+/* ── Item activo en Sidebar ── */
+.sidebar-active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  font-weight: 700;
+}

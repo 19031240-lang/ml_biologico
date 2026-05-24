@@ -6,41 +6,48 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-function Sidebar({ logout }) {
+function Sidebar({ logout, seccion, setSeccion, rol }) {
+
+  // Menú según rol
+  const itemsAdmin = [
+    { id: "inicio",    icon: <FaChartPie className="icon" />,  label: "Dashboard"  },
+    { id: "usuarios",  icon: <FaUsers    className="icon" />,  label: "Usuarios"   },
+    { id: "datasets",  icon: <FaDatabase className="icon" />,  label: "Datasets"   },
+  ];
+
+  const itemsInvestigador = [
+    { id: "inicio",    icon: <FaChartPie className="icon" />,  label: "Dashboard"  },
+    { id: "datasets",  icon: <FaDatabase className="icon" />,  label: "Datasets"   },
+    { id: "imagenes",  icon: <FaImage    className="icon" />,  label: "Imágenes"   },
+    { id: "modelos",   icon: <FaRobot    className="icon" />,  label: "Modelos"    },
+  ];
+
+  const itemsEstudiante = [
+    { id: "inicio",    icon: <FaChartPie className="icon" />,  label: "Dashboard"  },
+    { id: "imagenes",  icon: <FaImage    className="icon" />,  label: "Imágenes"   },
+  ];
+
+  const items =
+    rol === 1 ? itemsAdmin :
+    rol === 2 ? itemsInvestigador :
+    itemsEstudiante;
 
   return (
-
     <div className="sidebar">
 
       <h2>ML Bio</h2>
 
       <ul>
-
-        <li>
-          <FaChartPie className="icon" />
-          Dashboard
-        </li>
-
-        <li>
-          <FaDatabase className="icon" />
-          Datasets
-        </li>
-
-        <li>
-          <FaImage className="icon" />
-          Imágenes
-        </li>
-
-        <li>
-          <FaRobot className="icon" />
-          Modelos
-        </li>
-
-        <li>
-          <FaUsers className="icon" />
-          Usuarios
-        </li>
-
+        {items.map((item) => (
+          <li
+            key={item.id}
+            className={seccion === item.id ? "sidebar-active" : ""}
+            onClick={() => setSeccion(item.id)}
+          >
+            {item.icon}
+            {item.label}
+          </li>
+        ))}
       </ul>
 
       <button onClick={logout}>
@@ -48,9 +55,7 @@ function Sidebar({ logout }) {
       </button>
 
     </div>
-
   );
-
 }
 
 export default Sidebar;

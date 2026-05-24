@@ -1,0 +1,77 @@
+.dashboard-estudiante {
+  background: #f0fff4; /* verde claro */
+  min-height: 100vh;
+  padding: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dashboard-estudiante h1 {
+  color: #006699; /* azul científico */
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+  color: #1f4d3a; /* verde biológico */
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 24px;
+  color: #006699;
+}
+
+.crud-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.crud-container th {
+  background: #1f4d3a;
+  color: #ffffff;
+  padding: 12px;
+}
+
+.crud-container td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.crud-container tr:hover {
+  background: #eaf6f9;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #006699;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #004466;
+}
