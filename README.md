@@ -10,7 +10,7 @@ Instalación básica:
 
 Clonar el repositorio en tu entorno local.
 
-Instalar dependencias con pip install -r requirements.txt.
+La documentación de los diagramas esta en la presentación archivos de codigo donde se trabajo 
 
 Configurar base de datos si se requiere (ej. MySQL).
 
