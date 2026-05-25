@@ -14,4 +14,3 @@ Instalar dependencias con pip install -r requirements.txt.
 
 Configurar base de datos si se requiere (ej. MySQL).
 
-Ejecutar los scripts de entrenamiento o el servidor web según la documentación.
