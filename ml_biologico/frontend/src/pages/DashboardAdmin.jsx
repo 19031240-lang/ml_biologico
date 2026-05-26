@@ -1,9 +1,11 @@
 import { useEffect, useState, useRef } from "react";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 import axios from "axios";
 import "../styles/DashboardAdmin.css";
 
 const API = "http://localhost:4000/api";
-const CLUSTER_URL = "http://tu-servidor-cluster.com";
+const CLUSTER_URL = "https://nonobsessional-flynn-unrecognizing.ngrok-free.dev/";
 
 function authHeader() {
   return { Authorization: `Bearer ${localStorage.getItem("token")}` };
@@ -33,12 +35,18 @@ function DashboardAdmin({ seccion }) {
   const [editandoImg,   setEditandoImg]   = useState(null); // { id, id_dataset }
   const fileRef = useRef();
 
+// ── TUTORIALES ──
+const [tutoriales, setTutoriales] = useState([]);
+const [formTutorial, setFormTutorial] = useState({titulo: "", contenido: "", });
+const [editandoTutorial, setEditandoTutorial] = useState(null);
+  
   // ── CARGA ──
   useEffect(() => { fetchStats(); }, []);
   useEffect(() => {
     if (seccion === "usuarios")  fetchUsuarios();
     if (seccion === "datasets")  fetchDatasets();
-    if (seccion === "imagenes")  { fetchDatasets2(); fetchImagenes(); }
+    if (seccion === "imagenes")   { fetchDatasets2(); fetchImagenes(); }
+    if (seccion === "tutoriales") fetchTutoriales();
   }, [seccion]);
 
   // ════ STATS ════
@@ -181,6 +189,81 @@ function DashboardAdmin({ seccion }) {
     } catch { alert("Error al eliminar"); }
   };
 
+  // ════ TUTORIALES ════
+
+const fetchTutoriales = async () => {
+  try {
+    const res = await axios.get(
+      `${API}/tutoriales`,
+      { headers: authHeader() }
+    );
+    setTutoriales(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const guardarTutorial = async () => {
+  if (!formTutorial.titulo || !formTutorial.contenido) {
+    alert("Completa todos los campos");
+    return;
+  }
+  try {
+    if (editandoTutorial) {
+      await axios.put(
+        `${API}/tutoriales/${editandoTutorial}`,
+        formTutorial,
+        { headers: authHeader() }
+      );
+    } else {
+      await axios.post(
+        `${API}/tutoriales`,
+        formTutorial,
+        { headers: authHeader() }
+      );
+    }
+    setFormTutorial({
+      titulo: "",
+      contenido: "",
+    });
+    setEditandoTutorial(null);
+    fetchTutoriales();
+  } catch (error) {
+    console.log(error);
+    alert("Error al guardar tutorial");
+  }
+};
+
+const editarTutorial = (tutorial) => {
+  setEditandoTutorial(tutorial.id_tutorial);
+  setFormTutorial({
+    titulo: tutorial.titulo,
+    contenido: tutorial.contenido,
+  });
+};
+
+const cancelarTutorial = () => {
+  setEditandoTutorial(null);
+  setFormTutorial({
+    titulo: "",
+    contenido: "",
+  });
+};
+
+const eliminarTutorial = async (id) => {
+  if (!confirm("¿Eliminar tutorial?")) return;
+  try {
+    await axios.delete(
+      `${API}/tutoriales/${id}`,
+      { headers: authHeader() }
+    );
+    fetchTutoriales();
+  } catch (error) {
+    console.log(error);
+    alert("Error al eliminar");
+  }
+};
+
   // ════ HELPERS ════
   const rolLabel = (id) => {
     if (id === 1) return { texto: "Admin",        clase: "badge-admin" };
@@ -192,7 +275,14 @@ function DashboardAdmin({ seccion }) {
     const d = datasets2.find((d) => d.id_dataset === id || d.id_dataset === Number(id));
     return d ? d.nombre : `Dataset #${id}`;
   };
-
+  const modules = { toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }, { background: [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["link", "image", "video"],
+    ["clean"],],
+  };
   // ══════════════════════════════════════════════════════════════
   return (
     <div className="da-wrapper">
@@ -467,6 +557,69 @@ function DashboardAdmin({ seccion }) {
           </div>
         </div>
       )}
+      {/* ══ TUTORIALES ══ */}
+      {seccion === "tutoriales" && (
+        <div className="da-section">
+          <h2 className="da-section-title"> Gestión de tutoriales</h2>
+        <div className="da-form-box">
+      <h3>{ editandoTutorial ? "Editar tutorial" : "Crear tutorial" }</h3>
+      <div className="da-form-col">
+        <input
+          className="da-input da-input-full"
+          placeholder="Título del tutorial"
+          value={formTutorial.titulo}
+          onChange={(e) =>
+            setFormTutorial({
+              ...formTutorial,
+              titulo: e.target.value,
+            })
+          }
+        />
+       <ReactQuill
+        theme="snow"
+        value={formTutorial.contenido}
+        onChange={(value) =>
+         setFormTutorial({...formTutorial, contenido: value,})}
+       modules={modules}
+      className="da-editor"/>
+        <div className="da-modal-btns">
+          <button className="da-btn da-btn-primary" onClick={guardarTutorial}>
+            { editandoTutorial
+                ? "Guardar cambios"
+                : "Crear tutorial"
+            }
+          </button>
+          {
+            editandoTutorial && (
+              <button className="da-btn da-btn-ghost" onClick={cancelarTutorial}> Cancelar </button>
+            )
+          }
+        </div>
+      </div>
+    </div>
+    <div className="da-dataset-grid">
+      {
+        tutoriales.map((tutorial) => (
+          <div
+            className="da-dataset-card"
+            key={tutorial.id_tutorial}>
+            <div className="da-dataset-body">
+              <p className="da-dataset-name"> 📘 {tutorial.titulo}</p>
+              <div
+                className="da-tutorial-preview"
+                dangerouslySetInnerHTML={{ __html: tutorial.contenido }}
+              />
+              <div className="da-card-actions">
+                <button className="da-btn da-btn-edit da-btn-sm da-btn-half" onClick={() => editarTutorial(tutorial)}>  ✏️ Editar </button>
+                <button className="da-btn da-btn-danger da-btn-sm da-btn-half" onClick={() => eliminarTutorial(tutorial.id_tutorial)}> 🗑 Eliminar </button>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+)}
 
       {/* ══ CLUSTER ══ */}
       {seccion === "cluster" && (

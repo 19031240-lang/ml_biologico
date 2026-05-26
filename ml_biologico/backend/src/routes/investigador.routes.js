@@ -8,31 +8,31 @@ const router = Router();
 // Métricas del último entrenamiento del investigador
 router.get("/stats", verifyToken, async (req, res) => {
   try {
-    const [rows] = await pool.query(
+   const [rows] = await pool.query(
       `SELECT
-         ROW_NUMBER() OVER (ORDER BY m.fecha) AS Epoca,
-         m.loss        AS Loss_Train,
-         m.loss        AS Loss_Val,
-         m.accuracy    AS Accuracy,
-         m.precision_  AS Precision,
-         m.recall      AS Recall,
-         m.f1_score    AS F1_Score
-       FROM metricas m
-       INNER JOIN entrenamientos e ON m.id_entrenamiento = e.id_entrenamiento
-       INNER JOIN modelos mo       ON e.id_modelo = mo.id_modelo
-       WHERE mo.id_usuario = ?
-         AND e.id_entrenamiento = (
-           SELECT id_entrenamiento FROM entrenamientos
-           WHERE id_modelo IN (
-             SELECT id_modelo FROM modelos WHERE id_usuario = ?
-           )
-           ORDER BY fecha_inicio DESC LIMIT 1
-         )
-       ORDER BY m.fecha ASC`,
+        m.id_metrica,
+        m.loss        AS loss_train,
+        m.loss        AS loss_val,
+        m.accuracy,
+        m.precision_,
+        m.recall,
+        m.f1_score
+      FROM metricas m
+      INNER JOIN entrenamientos e ON m.id_entrenamiento = e.id_entrenamiento
+      INNER JOIN modelos mo       ON e.id_modelo = mo.id_modelo
+      WHERE mo.id_usuario = ?
+        AND e.id_entrenamiento = (
+          SELECT id_entrenamiento FROM entrenamientos
+          WHERE id_modelo IN (
+            SELECT id_modelo FROM modelos WHERE id_usuario = ?
+          )
+          ORDER BY fecha_inicio DESC LIMIT 1
+        )
+      ORDER BY m.id_metrica ASC`,
       [req.usuario.id, req.usuario.id]
     );
 
-    // Sin datos reales aún → demo
+    // Sin datos reales 
     if (rows.length === 0) {
       return res.json([
         { Epoca:1, Loss_Train:0.9,  Loss_Val:0.8,  Accuracy:0.60, Precision:0.58, Recall:0.55, F1_Score:0.56 },
@@ -129,6 +129,8 @@ router.post("/train", verifyToken, async (req, res) => {
     );
     const id_entrenamiento = entResult.insertId;
 
+    // 3. Simular métricas por época y guardarlas en metricas
+    //    (reemplaza este loop con tu script Python real cuando esté listo)
     let ultimaMetrica = null;
     for (let i = 1; i <= (epochs ?? 10); i++) {
       const p     = i / (epochs ?? 10);
