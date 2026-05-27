@@ -77,4 +77,8 @@ ESTE REPO TIENE UN QR PARA MAYOR SEGURIDAD
 
 <img width="1600" height="736" alt="image" src="https://github.com/user-attachments/assets/f8ab124c-d003-4ae5-a3af-217d8e6b5f83" />
 
+QR
+<img width="1024" height="1332" alt="ml_biologico-QR-REPO" src="https://github.com/user-attachments/assets/73a97def-e0b3-4658-8e9c-0bb92d5fa27a" />
+
+
 
