@@ -126,7 +126,7 @@ function App() {
   const renderContenido = () => {
     if (rol === 1) return <DashboardAdmin        seccion={seccion} />;
     if (rol === 2) return <DashboardInvestigador seccion={seccion} />;
-    if (rol === 3) return <DashboardEstudiante   seccion={seccion} />;
+    if (rol === 3) return <DashboardEstudiante seccion={seccion} setSeccion={setSeccion} />
     return <h1 style={{ padding: 40 }}>Sin permisos</h1>;
   };
 

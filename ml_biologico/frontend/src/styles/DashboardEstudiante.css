@@ -353,3 +353,65 @@
 .de-modal-contenido p  { margin-bottom: 10px; }
 .de-modal-contenido ul,
 .de-modal-contenido ol { padding-left: 22px; margin-bottom: 10px; }
+
+/* ── Accesos rápidos ── */
+.de-subtitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f4d3a;
+  margin-bottom: 14px;
+}
+.de-accesos { margin-top: 24px; }
+.de-accesos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.de-acceso-card {
+  background: white;
+  border: 2px solid #e8e3d8;
+  border-radius: 16px;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.de-acceso-card:hover {
+  border-color: #6b8f71;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(107,143,113,0.15);
+}
+.de-acceso-icon { font-size: 32px; }
+.de-acceso-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f4d3a;
+}
+.de-acceso-sub {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ── Frase motivacional ── */
+.de-frase-card {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #1f4d3a, #2d6a4f);
+  color: white;
+  border-radius: 16px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.de-frase-icon { font-size: 28px; flex-shrink: 0; }
+.de-frase-card p {
+  font-size: 15px;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.95;
+}

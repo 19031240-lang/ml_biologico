@@ -18,7 +18,7 @@ const LOGROS_DEF = [
   { id: 6, emoji: "🚀", titulo: "Listo para investigar", descripcion: "Realizaste 3 o más entrenamientos",      check: (s) => s.entrenamientos >= 3  },
 ];
 
-function DashboardEstudiante({ seccion }) {
+function DashboardEstudiante({ seccion, setSeccion }) {
   const usuario = JSON.parse(localStorage.getItem("usuario") || "{}");
 
   const [tutoriales,   setTutoriales]   = useState([]);
@@ -166,9 +166,37 @@ function DashboardEstudiante({ seccion }) {
               <div className="de-progress-fill" style={{ width: `${progreso}%` }} />
             </div>
           </div>
+          {/* Accesos rápidos */}
+          <div className="de-accesos">
+            <h3 className="de-subtitle">Accesos rápidos</h3>
+            <div className="de-accesos-grid">
+              <button className="de-acceso-card" onClick={() => setSeccion?.("tutoriales")}>
+                <span className="de-acceso-icon">📖</span>
+                <span className="de-acceso-label">Tutoriales</span>
+                <span className="de-acceso-sub">{completados.length}/{tutoriales.length} completados</span>
+              </button>
+              <button className="de-acceso-card" onClick={() => setSeccion?.("entrenamiento")}>
+                <span className="de-acceso-icon">🤖</span>
+                <span className="de-acceso-label">Entrenar modelo</span>
+                <span className="de-acceso-sub">Modo simplificado</span>
+              </button>
+              <button className="de-acceso-card" onClick={() => setSeccion?.("progreso")}>
+                <span className="de-acceso-icon">📈</span>
+                <span className="de-acceso-label">Mi progreso</span>
+                <span className="de-acceso-sub">{progreso}% completado</span>
+              </button>
+              <button className="de-acceso-card" onClick={() => setSeccion?.("logros")}>
+                <span className="de-acceso-icon">🏆</span>
+                <span className="de-acceso-label">Logros</span>
+                <span className="de-acceso-sub">{logrosDesbloqueados.length}/{LOGROS_DEF.length} desbloqueados</span>
+              </button>
+            </div>
+          </div>
 
-          <div className="de-info-box">
-            <p>Usa el menú lateral para navegar entre <strong>Tutoriales</strong>, <strong>Entrenamiento</strong>, tu <strong>Progreso</strong> y tus <strong>Logros</strong>.</p>
+          {/* Frase motivacional */}
+          <div className="de-frase-card">
+            <span className="de-frase-icon">🌱</span>
+            <p>"El machine learning no es magia, es matemáticas aplicadas con curiosidad."</p>
           </div>
         </div>
       )}
