@@ -1,0 +1,360 @@
+:root {
+  --green:   #6b8f71;
+  --green-d: #1f4d3a;
+  --green-l: #f0fff4;
+  --blue:    #006699;
+  --blue-l:  #e6f2f8;
+  --teal:    #79c8c0;
+  --sand:    #d8c3a5;
+  --sand-l:  #f5f1e8;
+  --white:   #ffffff;
+  --danger:  #c0392b;
+  --radius:  14px;
+  --shadow:  0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* ── Wrapper ── */
+.da-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--sand-l);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ── Sección ── */
+.da-section { padding: 40px; }
+
+.da-section-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--green-d);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--sand);
+}
+
+/* ── Cards de stats ── */
+.da-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.da-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--sand);
+}
+.da-card-green { border-left-color: var(--green); }
+.da-card-blue  { border-left-color: var(--blue);  }
+.da-card-sand  { border-left-color: var(--sand);  }
+
+.da-card-icon { font-size: 32px; }
+.da-card-num  { font-size: 30px; font-weight: 800; color: var(--green-d); line-height: 1; }
+.da-card-label{ font-size: 13px; color: var(--gray,#666); margin-top: 4px; }
+
+/* ── Info box ── */
+.da-info-box {
+  background: var(--green-l);
+  border: 1px solid #c3e6cb;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  color: var(--green-d);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* ── Botones ── */
+.da-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+  white-space: nowrap;
+}
+.da-btn-primary  { background: var(--green);  color: #fff; }
+.da-btn-primary:hover { background: var(--green-d); }
+.da-btn-ghost    { background: transparent; border: 2px solid var(--green); color: var(--green-d); }
+.da-btn-ghost:hover { background: var(--green-l); }
+.da-btn-edit     { background: var(--blue-l); color: var(--blue); }
+.da-btn-edit:hover { background: #cce0ee; }
+.da-btn-danger   { background: #fde8e8; color: var(--danger); }
+.da-btn-danger:hover { background: #f5c6c6; }
+.da-btn-sm { padding: 6px 14px; font-size: 13px; }
+.da-btn-half { flex: 1; justify-content: center; }
+.da-btn-cluster { width: 100%; justify-content: center; padding: 14px; font-size: 15px; }
+
+/* ── Formulario general ── */
+.da-form-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+}
+.da-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  align-items: flex-end;
+}
+.da-form-col { flex-direction: column; align-items: flex-start; }
+
+.da-input, .da-select {
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border .2s;
+  background: #fafafa;
+}
+.da-input:focus, .da-select:focus { border-color: var(--green); background: #fff; }
+.da-input-full, .da-select-full { width: 100%; }
+
+.da-upload-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.da-file-label {
+  padding: 10px 18px;
+  background: var(--sand-l);
+  border: 1.5px dashed var(--sand);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--green-d);
+  transition: .2s;
+}
+.da-file-label:hover { background: #ede7d9; }
+
+.da-preview { margin-top: 10px; }
+.da-preview-img { max-width: 140px; border-radius: 10px; border: 2px solid var(--sand); }
+
+/* ── Tabla de usuarios ── */
+.da-table-wrap {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.da-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.da-table th {
+  background: var(--green-d);
+  color: #fff;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+}
+.da-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0ece4;
+  vertical-align: middle;
+}
+.da-table tr:last-child td { border-bottom: none; }
+.da-table tr:hover td { background: var(--sand-l); }
+
+.da-actions { display: flex; gap: 8px; }
+
+/* ── Grid de datasets ── */
+.da-dataset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+.da-dataset-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.da-dataset-header {
+  position: relative;
+  height: 140px;
+  overflow: hidden;
+  background: var(--sand-l);
+}
+.da-dataset-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.da-dataset-no-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+.da-dataset-body { padding: 16px; }
+.da-dataset-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-d);
+  margin-bottom: 4px;
+}
+.da-dataset-desc {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 14px;
+}
+.da-card-actions { display: flex; gap: 8px; }
+
+/* ── Grid de imágenes ── */
+.da-img-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.da-img-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.da-img-thumb {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+.da-img-info { padding: 10px 12px; }
+.da-img-dataset {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 2px;
+}
+.da-img-name {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.da-empty {
+  color: #999;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+/* ── Editor Quill ── */
+.da-editor {
+  background: white !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  border: 1px solid #ddd !important;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.da-editor .ql-toolbar {
+  background: #f5f5f5 !important;
+  border: none !important;
+  border-bottom: 1px solid #ddd !important;
+}
+.da-editor .ql-container {
+  min-height: 200px !important;
+  border: none !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  background: white !important;
+}
+.da-editor .ql-editor {
+  min-height: 180px !important;
+  padding: 12px 16px !important;
+  color: #222 !important;
+  background: white !important;
+}
+
+/* ── Preview tutorial en tarjeta ── */
+.da-tutorial-preview {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  margin: 6px 0 10px;
+  max-height: 60px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.da-tutorial-preview * {
+  color: #555 !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ── Modal ── */
+.da-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+.da-modal {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 36px;
+  max-width: 540px;
+  width: 90%;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.da-modal-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-d);
+}
+.da-modal-sub { font-size: 13px; color: #777; }
+.da-modal-preview { max-width: 100%; border-radius: 10px; }
+.da-modal-btns { display: flex; gap: 10px; margin-top: 6px; }
+
+/* ── Cluster ── */
+.da-cluster-frame-wrap {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 20px;
+}
+.da-cluster-frame {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
