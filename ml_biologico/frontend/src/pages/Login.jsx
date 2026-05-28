@@ -5,7 +5,7 @@ const login = async (e) => {
   try {
 
     const res = await axios.post(
-      "http://localhost:4000/api/auth/login",
+      `${API_URL}/api/auth/login`,
       {
         email,
         password,

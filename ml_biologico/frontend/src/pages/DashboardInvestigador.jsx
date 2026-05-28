@@ -13,7 +13,8 @@ ChartJS.register(
   LineElement, BarElement, Title, Tooltip, Legend
 );
 
-const API = "http://localhost:4000/api";
+import API_URL from "../api";
+const API = `${API_URL}/api`;
 
 function authHeader() {
   return { Authorization: `Bearer ${localStorage.getItem("token")}` };
@@ -388,7 +389,7 @@ function DatasetsInvestigador({ datasets, onActualizar }) {
           <div className="di-dataset-card" key={d.id_dataset}>
             <div className="di-dataset-img-wrap">
               {d.imagen
-                ? <img src={`http://localhost:4000/uploads/${d.imagen}`} alt={d.nombre} />
+                ? <img src={`${API_URL}/uploads/${d.imagen}`} alt={d.nombre} />
                 : <div className="di-dataset-no-img">🔬</div>}
             </div>
             <div className="di-dataset-body">
@@ -488,7 +489,7 @@ function ImagenesInvestigador({ datasets }) {
         <div className="di-modal-overlay">
           <div className="di-modal">
             <h3>✏️ Mover imagen a otro dataset</h3>
-            <img src={`http://localhost:4000/uploads/${editandoImg.url}`} alt=""
+            <img src={`${API_URL}/uploads/${editandoImg.url}`} alt=""
               className="di-modal-preview" onError={(e) => { e.target.style.display = "none"; }} />
             <label className="di-modal-label">Dataset destino</label>
             <select className="di-select" style={{ width: "100%", borderRadius: 12 }}
@@ -509,7 +510,7 @@ function ImagenesInvestigador({ datasets }) {
         <div className="di-lightbox" onClick={() => setSeleccion(null)}>
           <div className="di-lightbox-inner" onClick={(e) => e.stopPropagation()}>
             <button className="di-lightbox-close" onClick={() => setSeleccion(null)}>✕</button>
-            <img src={`http://localhost:4000/uploads/${seleccion.url}`} alt={seleccion.url} />
+            <img src={`${API_URL}/uploads/${seleccion.url}`} alt={seleccion.url} />
             <p>{seleccion.url} — <em>{nombreDataset(seleccion.id_dataset)}</em></p>
           </div>
         </div>
@@ -569,7 +570,7 @@ function ImagenesInvestigador({ datasets }) {
           const imgId = img.id_imagen ?? img.id;
           return (
             <div key={imgId} className="di-img-card">
-              <img src={`http://localhost:4000/uploads/${img.url}`} alt={img.url}
+              <img src={`${API_URL}/uploads/${img.url}`} alt={img.url}
                 onClick={() => setSeleccion(img)}
                 onError={(e) => { e.target.style.display = "none"; }} />
               <p className="di-img-dataset">📁 {nombreDataset(img.id_dataset)}</p>

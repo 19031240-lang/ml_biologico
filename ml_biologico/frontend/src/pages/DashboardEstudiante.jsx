@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/DashboardEstudiante.css";
 
-const API = "http://localhost:4000/api";
+import API_URL from "../api";
+const API = `${API_URL}/api`;
 
 function authHeader() {
   return { Authorization: `Bearer ${localStorage.getItem("token")}` };

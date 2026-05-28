@@ -4,7 +4,8 @@ import "react-quill-new/dist/quill.snow.css";
 import axios from "axios";
 import "../styles/DashboardAdmin.css";
 
-const API = "http://localhost:4000/api";
+import API_URL from "../api";
+const API = `${API_URL}/api`;
 const CLUSTER_URL = "https://nonobsessional-flynn-unrecognizing.ngrok-free.dev/";
 
 function authHeader() {
@@ -319,7 +320,7 @@ const eliminarTutorial = async (id) => {
             <h3>✏️ Editar imagen</h3>
             <p className="da-modal-sub">Cambiar el dataset al que pertenece esta imagen</p>
             <img
-              src={`http://localhost:4000/uploads/${editandoImg.url}`}
+              src={`${API_URL}/uploads/${editandoImg.url}`}
               alt="preview"
               className="da-modal-preview"
             />
@@ -460,7 +461,7 @@ const eliminarTutorial = async (id) => {
               <div className="da-dataset-card" key={d.id_dataset}>
                 <div className="da-dataset-header">
                   {d.imagen
-                    ? <img src={`http://localhost:4000/uploads/${d.imagen}`} alt={d.nombre} className="da-dataset-img" />
+                    ? <img src={`${API_URL}/uploads/${d.imagen}`} alt={d.nombre} className="da-dataset-img" />
                     : <div className="da-dataset-no-img">🔬</div>}
                 </div>
                 <div className="da-dataset-body">
@@ -528,7 +529,7 @@ const eliminarTutorial = async (id) => {
               return (
                 <div className="da-img-card" key={imgId}>
                   <img
-                    src={`http://localhost:4000/uploads/${img.url}`}
+                    src={`${API_URL}/uploads/${img.url}`}
                     alt={img.url}
                     className="da-img-thumb"
                     onError={(e) => { e.target.style.display = "none"; }}

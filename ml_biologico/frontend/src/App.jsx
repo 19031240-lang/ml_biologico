@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_URL from "./api";
 
 import "./index.css";
 
@@ -26,7 +27,7 @@ function App() {
   const login = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/login", {
+      const res = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
       });
@@ -42,7 +43,7 @@ function App() {
   const register = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/auth/register", {
+      await axios.post(`${API_URL}/api/auth/register`, {
         nombre,
         email,
         password,
