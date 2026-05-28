@@ -358,3 +358,18 @@
   height: 600px;
   border: none;
 }
+/* ── RESPONSIVE MÓVIL ── */
+@media (max-width: 768px) {
+  .da-section { padding: 16px; }
+  .da-cards { gap: 12px; }
+  .da-card { min-width: 130px; padding: 16px; }
+  .da-table-wrap { overflow-x: auto; }
+  .da-table { font-size: 12px; }
+  .da-table th, .da-table td { padding: 8px 10px; }
+  .da-dataset-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .da-img-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .da-form-row { flex-direction: column; }
+  .da-modal { padding: 20px; }
+  .da-modal-btns { flex-direction: column; }
+  .da-actions { flex-wrap: wrap; gap: 4px; }
+}

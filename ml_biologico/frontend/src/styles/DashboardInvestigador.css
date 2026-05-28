@@ -447,3 +447,17 @@
 
 /* ── Utilidades ── */
 .di-empty { color: var(--gray); font-style: italic; padding: 20px 0; }
+/* ── RESPONSIVE MÓVIL ── */
+@media (max-width: 768px) {
+  .di-section { padding: 16px; }
+  .di-cards { gap: 12px; }
+  .di-card { min-width: 130px; }
+  .di-charts { grid-template-columns: 1fr; }
+  .di-train-layout { grid-template-columns: 1fr; }
+  .di-fields-row { grid-template-columns: 1fr; }
+  .di-dataset-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .di-img-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .di-table-wrap { overflow-x: auto; }
+  .di-table { font-size: 12px; }
+  .di-btn-row { flex-direction: column; }
+}

@@ -415,3 +415,18 @@
   line-height: 1.6;
   opacity: 0.95;
 }
+/* ── RESPONSIVE MÓVIL ── */
+@media (max-width: 768px) {
+  .de-section { padding: 16px; }
+  .de-cards { gap: 12px; }
+  .de-card { min-width: 130px; }
+  .de-accesos-grid { grid-template-columns: repeat(2, 1fr); }
+  .de-tutorial-grid { grid-template-columns: 1fr; }
+  .de-progreso-grid { grid-template-columns: 1fr; }
+  .de-resultado-grid { grid-template-columns: 1fr; }
+  .de-logros-grid { grid-template-columns: repeat(2, 1fr); }
+  .de-modal { padding: 20px; }
+  .de-modal-btns { flex-direction: column; }
+  .de-entrena-box { padding: 16px; }
+  .de-frase-card { flex-direction: column; text-align: center; }
+}
