@@ -72,7 +72,7 @@ function App() {
           <div className="login-left">
             <img
               className="avatar"
-              src="https://sii.celaya.tecnm.mx/img/logo_lince.png"
+              src="https://crodecelaya.tecnm.mx"
               alt=""
             />
             <h2>ML Biológico</h2>
