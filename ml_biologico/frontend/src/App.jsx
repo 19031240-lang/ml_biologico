@@ -70,7 +70,6 @@ function App() {
         <div className="login-card">
 
           <div className="login-left">
-          <h3 className="login-title">Tecnológico Nacional de México</h3>
             <img
               className="avatar"
               src="/crode.jpg"
