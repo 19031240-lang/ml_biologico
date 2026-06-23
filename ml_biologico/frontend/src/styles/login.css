@@ -203,4 +203,20 @@ body{
   .login-form button {
     width: 100%;
   }
+  .login-info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+.login-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+.login-info li {
+  margin: 2px 0;
+}
 }
