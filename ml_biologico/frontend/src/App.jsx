@@ -78,6 +78,14 @@ function App() {
             <h2>ML Biológico</h2>
             <p>Plataforma de análisis y administración de datasets biológicos.</p>
           </div>
+          <div className="login-info">
+            <p>Versión: 1.0</p>
+            <p>Integrantes:</p>
+             <ul>
+            <li>Karla</li>
+            <li>jacqueline</li>
+            </ul>
+           </div>
           <div className="login-right">
             <h1>{isRegister ? "Registro" : "Login"}</h1>
 
