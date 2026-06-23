@@ -81,6 +81,7 @@ function App() {
           <div className="login-info">
             <p>Versión: 1.0</p>
             <p>Integrantes:</p>
+             <p>Estudiantes del tec de celaya de ing en sistemas computacionales:</p>
              <ul>
             <li>Karla</li>
             <li>jacqueline</li>
