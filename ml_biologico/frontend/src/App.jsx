@@ -78,10 +78,6 @@ function App() {
             <h2>ML Biológico</h2>
             <p>Plataforma de análisis y administración de datasets biológicos.</p>
           </div>
-        <div className="login-info">
-        <p><strong>Integrantes:</strong> Karla, jacqueline  Estudiantes de la carrera de ing sistemas computacionales en el tec de celaya , </p>
-       </div>
-      </div>
           <div className="login-right">
             <h1>{isRegister ? "Registro" : "Login"}</h1>
 
