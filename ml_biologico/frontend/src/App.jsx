@@ -79,7 +79,6 @@ function App() {
             <p>Plataforma de análisis y administración de datasets biológicos.</p>
           </div>
         <div className="login-info">
-         <p><strong>Versión:</strong> 1.0</p>
         <p><strong>Integrantes:</strong> Karla, jacqueline  Estudiantes de la carrera de ing sistemas computacionales en el tec de celaya , </p>
        </div>
       </div>
